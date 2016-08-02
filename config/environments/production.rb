@@ -25,9 +25,20 @@ Rails.application.configure do
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
+<<<<<<< HEAD
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
+=======
+  # config.assets.js_compressor = :uglifier
+  # config.assets.css_compressor = :sass
+
+  # Disable minification since it adds a *huge* amount of time to precompile.
+  # Anyway, gzip alone gets us about 70% of the benefits of minify+gzip.
+  config.assets.js_compressor = false
+  config.assets.css_compressor = false
+
+>>>>>>> refs/remotes/origin/master
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
@@ -39,10 +50,17 @@ Rails.application.configure do
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
+<<<<<<< HEAD
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
+=======
+  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
+
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  config.force_ssl = true
+>>>>>>> refs/remotes/origin/master
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -64,6 +82,21 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+<<<<<<< HEAD
+=======
+  # Production email config
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = {
+    :api_token => ENV.fetch("POSTMARK_API_KEY")
+  }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {
+    :host => "mycalendar.com",
+    :protocol => "https"
+  }
+  config.action_mailer.asset_host = "https://mycalendar.com"
+
+>>>>>>> refs/remotes/origin/master
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
